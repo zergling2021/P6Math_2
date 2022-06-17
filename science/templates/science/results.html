@@ -1,0 +1,18 @@
+<a href="http://192.168.18.10:8000/science">Go Home</a>
+<BR>
+<h3>{{ sciencequestion.question_text }}</h3>
+
+<ul>
+{% for sciencechoice in sciencequestion.sciencechoice_set.all %}
+    <!--
+    <li>{{ sciencechoice.choice_text }} -- {{ sciencechoice.votes }} vote{{ sciencechoice.votes|pluralize }}</li>
+    -->
+    {{sciencechoice.choice_text}}<br>
+{% endfor %}
+</ul>
+
+{{sciencequestion.result_text}}
+<br>
+<br>
+
+<a href="{% url 'science:detail' sciencequestion.id %}">Try again?</a>

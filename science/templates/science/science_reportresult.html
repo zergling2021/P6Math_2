@@ -1,0 +1,30 @@
+
+
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'science/style.css' %}">
+
+
+        Topic Index;Number of Questions;Number of Attempted Questions (MCQ+Open); Number of success first attempt for MCQ Questions;Number of success last attempt for MCQ Questions;Average Score of Open Questions-First Attempt;Average Score of Open Questions-Latest Attempt
+{% if level1_topic_list %}
+    <ul>
+    {% for tp in level1_topic_list %}
+        {{ tp.topic_index }} {{ tp.topic_name }};{{ tp.number_of_questions }};{{ tp.number_of_attempted_questions }};{{ tp.number_of_success_first_attempt }};{{ tp.number_of_latest_success_attempt }};{{ tp.avg_first_self_rated_score }};{{ tp.avg_latest_self_rated_score }} <BR>
+    {% endfor %}
+    </ul>
+{% endif %}
+{% if level2_topic_list %}
+    <ul>
+    {% for tp in level2_topic_list %}
+        {{ tp.topic_index }} {{ tp.topic_name }};{{ tp.number_of_questions }};{{ tp.number_of_attempted_questions }};{{ tp.number_of_success_first_attempt }};{{ tp.number_of_latest_success_attempt }};{{ tp.avg_first_self_rated_score }};{{ tp.avg_latest_self_rated_score }} <BR>
+    {% endfor %}
+    </ul>
+{% endif %}
+{% if level3_topic_list %}
+    <ul>
+    {% for tp in level3_topic_list %}
+        {{ tp.topic_index }} {{ tp.topic_name }};{{ tp.number_of_questions }};{{ tp.number_of_attempted_questions }};{{ tp.number_of_success_first_attempt }};{{ tp.number_of_latest_success_attempt }};{{ tp.avg_first_self_rated_score }};{{ tp.avg_latest_self_rated_score }} <BR>
+    {% endfor %}
+    </ul>
+{% endif %}
+

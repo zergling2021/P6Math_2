@@ -1,0 +1,19 @@
+<a href="http://192.168.18.10:8000/science/">Go Home</a>
+<BR><BR>
+
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'science/style.css' %}">
+
+List of Science Open Questions <BR>
+{% if science_open_question_list %}
+    <ul>
+    {% for question in science_open_question_list %}
+        <li><a href="{% url 'science:detail' question.id %}">{{ question.question_model_index }}</a></li>
+    {% endfor %}
+    </ul>
+{% endif %}
+<BR><BR>
+
+
+<BR><BR>

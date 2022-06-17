@@ -1,0 +1,51 @@
+<a href="http://192.168.18.10:8000/science/">Go Home</a>
+
+<h3>{{ sciencequestion.question_text }}</h3>
+
+(Source: {{ sciencequestion.question_source }})<BR><BR>
+{{ sciencequestion.question_additional_text_line_1 }}<BR>
+{{ sciencequestion.question_additional_text_line_2 }}<BR>
+{{ sciencequestion.question_additional_text_line_3 }}<BR>
+{{ sciencequestion.question_additional_text_line_4 }}<BR>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+{% load static %} <img src="{% static 'science/media/' %}{{sciencequestion.image_name}}" alt="home" />
+{% load static %} <img src="{% static 'science/media/' %}{{sciencequestion.image2_name}}" alt="home" />
+
+<BR><BR>
+
+<form action="{% url 'science:vote' sciencequestion.id %}" method="post">
+{% csrf_token %}
+{% for sciencechoice in sciencequestion.sciencechoice_set.all %}
+    <!--  <input type="radio" name="sciencechoice" id="sciencechoice{{ forloop.counter }}" value="{{ sciencechoice.id }}">
+     <label for="sciencechoice{{ forloop.counter }}">{{ sciencechoice.choice_text }}</label><br>
+     -->
+    {{sciencechoice.choice_text}} <br>
+{% endfor %}
+<BR><BR>
+
+
+You answer (Part a) <input type = "text", name="attempted_answer_a", id="attempted_answer_a" value="" size="100"> <BR>
+<BR>
+
+The following is only applicable for open ended questions. <BR>
+Part b)
+<input type = "text", name="attempted_answer_b", id="attempted_answer_b" value="" size="100"> <BR>
+Part c)
+<input type = "text", name="attempted_answer_c", id="attempted_answer_c" value="" size="100"> <BR>
+Part d)
+<input type = "text", name="attempted_answer_d", id="attempted_answer_d" value="" size="100"> <BR>
+<BR><BR>
+Self-Rated Score (out of 10) for Open Questions Only
+<input type = "text", name="self_rated_score", id="self_rated_score" value=""> <BR>
+
+    <BR>
+<input type="submit" value="Submit Answer">
+
+<BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR>
+<BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR>
+<BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR>
+
+{% load static %} <img src="{% static 'science/media/' %}{{sciencequestion.answer_image_name}}" alt="home" />
+
+</form>
